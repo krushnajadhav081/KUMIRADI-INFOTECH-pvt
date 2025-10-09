@@ -1,234 +1,341 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Animated Blog Cards with Popup</title>
-<link href="https://fonts.googleapis.com/css2?family=Sura:wght@400;700&display=swap" rel="stylesheet">
-<style>
-:root {
-  --size: 30vmin; /* desktop size */
-  --duration: 300ms;
-  --ease-out: cubic-bezier(0.25, 1, 0.5, 1);
-  --bounce-out: cubic-bezier(0.34, 1.56, 0.64, 1);
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KUMIRADI Infotech Blog</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Root variables */
+    :root {
+      --size: 30vmin;
+      --duration: 300ms;
+      --ease-out: cubic-bezier(0.25, 1, 0.5, 1);
+      --bounce-out: cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
 
-* { box-sizing: border-box; margin:0; padding:0; }
+    * { box-sizing: border-box; margin:0; padding:0; }
+    html, body { height: 100%; }
+    body {
+      display: flex;
+      flex-direction: column;
+      font-family: "Sura", sans-serif;
+      background-color: #ffffff;
+      color: #333;
+    }
 
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-  background-color: #1d1e22;
-  font-family: "Sura", sans-serif;
-  color: white;
-  min-height: 100vh;
-}
+    .page-wrapper {
+      display: flex;
+      flex-direction: column;
+      flex: 1; /* grow to push footer down */
+    }
 
-/* Container */
-.blog-section {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-  width: 100%;
-  max-width: 1200px;
-}
+    /* Header */
+    .header {
+      background: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+    }
+    .header.scrolled { background-color: rgba(255,255,255,0.95); backdrop-filter: blur(10px); }
 
-/* Promo card */
-.promo {
-  position: relative;
-  width: var(--size);
-  height: var(--size);
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  overflow: hidden;
-  border-radius: 20px;
-  transition: transform var(--duration) var(--ease-out);
-}
+    .nav-desktop a { margin-left: 1rem; text-decoration: none; color: #333; font-weight: 500; }
+    .btn-primary { background: #ff4081; color: #fff; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; }
 
-.promo .image-wrapper {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  clip-path: polygon(100% 0, 100% 50%, 100% 100%, 0% 100%, 0 50%, 0% 0%);
-  transition: transform var(--duration) var(--ease-out),
-              clip-path var(--duration) var(--ease-out);
-}
+    /* Blog Section */
+    .blog-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      width: 100%;
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
 
-.promo .image-wrapper img {
-  width: 120%;
-  height: 100%;
-  object-fit: cover;
-  transform: translateX(-10%);
-  transition: transform var(--duration) var(--ease-out);
-}
+    .promo {
+      position: relative;
+      width: var(--size);
+      height: var(--size);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+      border-radius: 20px;
+      transition: transform var(--duration) var(--ease-out);
+    }
 
-.promo .image-wrapper::after {
-  content: "";
-  position: absolute;
-  top:0; left:0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--overlay-color, #000);
-  mix-blend-mode: multiply;
-  opacity: 0;
-  transition: opacity var(--duration) var(--ease-out);
-}
+    .promo .image-wrapper {
+      position: absolute;
+      top:0; left:0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      clip-path: polygon(100% 0, 100% 50%, 100% 100%, 0% 100%, 0 50%, 0% 0%);
+      transition: transform var(--duration) var(--ease-out), clip-path var(--duration) var(--ease-out);
+    }
 
-.promo .title {
-  position: relative;
-  z-index: 2;
-  font-size: 2rem;
-  font-weight: 700;
-  padding: 1rem;
-  pointer-events: none;
-  transition: transform var(--duration) var(--ease-out);
-}
+    .promo .image-wrapper img {
+      width: 120%;
+      height: 100%;
+      object-fit: cover;
+      transform: translateX(-10%);
+      transition: transform var(--duration) var(--ease-out);
+    }
 
-.title::after {
-  content: attr(data-cta);
-  display: block;
-  font-weight: 400;
-  font-size: 1rem;
-  opacity: 0;
-  margin-top: 0.5rem;
-  transform: translateX(-25%);
-  transition: transform var(--duration) var(--ease-out),
-              opacity var(--duration) var(--ease-out);
-}
+    .promo .image-wrapper::after {
+      content: "";
+      position: absolute;
+      top:0; left:0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--overlay-color, #000);
+      mix-blend-mode: multiply;
+      opacity: 0;
+      transition: opacity var(--duration) var(--ease-out);
+    }
 
-/* Hover effects */
-.promo:hover .image-wrapper img { transform: translateX(0); }
-.promo:hover .image-wrapper {
-  clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
-  transform: translateX(25%);
-  transition-timing-function: var(--bounce-out);
-}
-.promo:hover .title { transform: translateX(5%); transition-timing-function: var(--bounce-out); }
-.promo:hover .title::after { opacity: 1; transform: translateX(0); transition-timing-function: var(--bounce-out); }
-.promo:hover .image-wrapper::after { opacity: 0.6; }
+    .promo .title {
+      position: relative;
+      z-index: 2;
+      font-size: 2rem;
+      font-weight: 700;
+      padding: 1rem;
+      pointer-events: none;
+      transition: transform var(--duration) var(--ease-out);
+    }
 
-/* Responsive */
-@media screen and (max-width: 1024px) { :root { --size: 35vmin; } }
-@media screen and (max-width: 768px) { 
-  .blog-section { flex-direction: column; align-items: center; } 
-  :root { --size: 70vmin; } 
-}
-@media screen and (max-width: 480px) { :root { --size: 80vmin; } }
+    .title::after {
+      content: attr(data-cta);
+      display: block;
+      font-weight: 400;
+      font-size: 1rem;
+      opacity: 0;
+      margin-top: 0.5rem;
+      transform: translateX(-25%);
+      transition: transform var(--duration) var(--ease-out), opacity var(--duration) var(--ease-out);
+    }
 
-/* Modal Styles */
-.modal {
-  display: none;
-  position: fixed;
-  top:0; left:0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0,0,0,0.8);
-  justify-content: center;
-  align-items: center;
-  z-index: 100;
-  padding: 2rem;
-}
+    .promo:hover .image-wrapper img { transform: translateX(0); }
+    .promo:hover .image-wrapper {
+      clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
+      transform: translateX(25%);
+      transition-timing-function: var(--bounce-out);
+    }
+    .promo:hover .title { transform: translateX(5%); transition-timing-function: var(--bounce-out); }
+    .promo:hover .title::after { opacity: 1; transform: translateX(0); transition-timing-function: var(--bounce-out); }
+    .promo:hover .image-wrapper::after { opacity: 0.6; }
 
-.modal-content {
-  background: #1d1e22;
-  padding: 2rem;
-  border-radius: 15px;
-  max-width: 600px;
-  width: 100%;
-  color: white;
-  text-align: center;
-  position: relative;
-  transform: scale(0.8);
-  opacity: 0;
-  transition: all 0.3s ease-in-out;
-}
+    @media screen and (max-width: 1024px) { :root { --size: 35vmin; } }
+    @media screen and (max-width: 768px) { 
+      .blog-section { flex-direction: column; align-items: center; } 
+      :root { --size: 70vmin; } 
+    }
+    @media screen and (max-width: 480px) { :root { --size: 80vmin; } }
 
-.modal.show .modal-content {
-  transform: scale(1);
-  opacity: 1;
-}
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top:0; left:0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+      padding: 2rem;
+    }
 
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 1.5rem;
-  cursor: pointer;
-  background: none;
-  border: none;
-  color: white;
-}
-</style>
+    .modal-content {
+      background: #1d1e22;
+      padding: 2rem;
+      border-radius: 15px;
+      max-width: 600px;
+      width: 100%;
+      color: #fff;
+      text-align: center;
+      position: relative;
+      transform: scale(0.8);
+      opacity: 0;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .modal.show .modal-content { transform: scale(1); opacity: 1; }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: #fff;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #1d1e22;
+      color: #fff;
+      padding: 2rem 1rem;
+      flex-shrink: 0;
+    }
+    .footer h3, .footer h4, .footer h5 { color: #fff; }
+    .footer a { color: #fff; text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+
+    .footer .container { max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; gap: 2rem; }
+    .footer-section { flex: 1 1 250px; }
+    .footer-bottom { text-align: center; margin-top: 2rem; border-top: 1px solid #444; padding-top: 1rem; font-size: 0.9rem; }
+    .social-links a { margin-right: 0.5rem; }
+  </style>
 </head>
 <body>
 
-<div class="blog-section">
+<div class="page-wrapper">
 
-  <div class="promo" style="--overlay-color: hotpink;" data-title="AI & Technology" data-content="The Future of Artificial Intelligence in Business Transformation. As we know the world is moving towards the AI age and businesses are adopting AI.">
-    <div class="image-wrapper"><img src="https://images.unsplash.com/photo-1697577418970-95d99b5a55cf?crop=entropy&cs=srgb&fm=jpg" alt="AI Technology"></div>
-    <h2 class="title" data-cta="Read More →">AI & Technology</h2>
+  <!-- Header -->
+  <header class="header">
+    <div class="logo"><h1>KUMIRADI <span>Infotech</span></h1></div>
+    <nav class="nav-desktop">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button class="btn-primary"><i class="fas fa-phone"></i> Call: +91-9798990420</button>
+  </header>
+
+  <!-- Blog Section -->
+  <div class="blog-section">
+
+    <div class="promo" style="--overlay-color: hotpink;" data-title="AI & Technology" data-content="The Future of AI in Business.">
+      <div class="image-wrapper"><img src="https://images.unsplash.com/photo-1697577418970-95d99b5a55cf?crop=entropy&cs=srgb&fm=jpg" alt="AI Technology"></div>
+      <h2 class="title" data-cta="Read More →">AI & Technology</h2>
+    </div>
+
+    <div class="promo" style="--overlay-color: yellow;" data-title="Cybersecurity" data-content="Building robust cybersecurity.">
+      <div class="image-wrapper"><img src="https://images.unsplash.com/photo-1674027444485-cec3da58eef4?crop=entropy&cs=srgb&fm=jpg" alt="Cybersecurity"></div>
+      <h2 class="title" data-cta="Read More →">Cybersecurity</h2>
+    </div>
+
+    <div class="promo" style="--overlay-color: dodgerblue;" data-title="Cloud Technology" data-content="Cloud migration best practices.">
+      <div class="image-wrapper"><img src="https://images.unsplash.com/photo-1648737966636-2fc3a5fffc8a?crop=entropy&cs=srgb&fm=jpg" alt="Cloud Technology"></div>
+      <h2 class="title" data-cta="Read More →">Cloud Technology</h2>
+    </div>
+
+    <div class="promo" style="--overlay-color: darkgreen;" data-title="Training & Development" data-content="Machine learning programs.">
+      <div class="image-wrapper"><img src="https://images.unsplash.com/photo-1579403124614-197f69d8187b?crop=entropy&cs=srgb&fm=jpg" alt="Training & Development"></div>
+      <h2 class="title" data-cta="Read More →">Training & Development</h2>
+    </div>
+
   </div>
 
-  <div class="promo" style="--overlay-color: yellow;" data-title="Cybersecurity" data-content="Building Robust Cybersecurity Infrastructure for Modern Enterprises. Today's digital landscape demands comprehensive security strategies.">
-    <div class="image-wrapper"><img src="https://images.unsplash.com/photo-1674027444485-cec3da58eef4?crop=entropy&cs=srgb&fm=jpg" alt="Cybersecurity"></div>
-    <h2 class="title" data-cta="Read More →">Cybersecurity</h2>
+  <!-- Modal -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <button class="close-btn" id="closeBtn">&times;</button>
+      <h2 id="modalTitle"></h2>
+      <p id="modalContent"></p>
+    </div>
   </div>
 
-  <div class="promo" style="--overlay-color: dodgerblue;" data-title="Cloud Technology" data-content="Cloud Migration Strategies: Best Practices for Digital Transformation. Google Cloud, AWS, and Azure platforms require strategic implementation.">
-    <div class="image-wrapper"><img src="https://images.unsplash.com/photo-1648737966636-2fc3a5fffc8a?crop=entropy&cs=srgb&fm=jpg" alt="Cloud Technology"></div>
-    <h2 class="title" data-cta="Read More →">Cloud Technology</h2>
-  </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-section">
+        <h3>KUMIRADI <span>Infotech</span></h3>
+        <p>Innovative solutions in software development, IT infrastructure, AI training, and digital transformation.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h4>Our Services</h4>
+        <ul>
+          <li><a href="#"><i class="fas fa-arrow-right"></i> Software Development</a></li>
+          <li><a href="#"><i class="fas fa-arrow-right"></i> AI & ML Training</a></li>
+          <li><a href="#"><i class="fas fa-arrow-right"></i> Web Development</a></li>
+          <li><a href="#"><i class="fas fa-arrow-right"></i> Cybersecurity</a></li>
+          <li><a href="#"><i class="fas fa-arrow-right"></i> IT Infrastructure</a></li>
+          <li><a href="#"><i class="fas fa-arrow-right"></i> Digital Transformation</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#"><i class="fas fa-arrow-right"></i> About Us</a></li>
+          <li><a href="#"><i class="fas fa-arrow-right"></i> Our Services</a></li>
+          <li><a href="#"><i class="fas fa-arrow-right"></i> Portfolio</a></li>
+          <li><a href="#"><i class="fas fa-arrow-right"></i> Blog</a></li>
+          <li><a href="#"><i class="fas fa-arrow-right"></i> Careers</a></li>
+          <li><a href="#"><i class="fas fa-arrow-right"></i> Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Stay Updated</h4>
+        <div class="newsletter">
+          <input type="email" placeholder="Enter your email">
+          <button class="btn-primary">Subscribe Now</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 KUMIRADI Infotech India Pvt. Ltd. All rights reserved.</p>
+    </div>
+  </footer>
 
-  <div class="promo" style="--overlay-color: darkgreen;" data-title="Training & Development" data-content="Machine Learning Training Programs: Upskilling for the Future Workforce. Our comprehensive programs prepare professionals for technology challenges.">
-    <div class="image-wrapper"><img src="https://images.unsplash.com/photo-1579403124614-197f69d8187b?crop=entropy&cs=srgb&fm=jpg" alt="Training & Development"></div>
-    <h2 class="title" data-cta="Read More →">Training & Development</h2>
-  </div>
-
-</div>
-
-<!-- Modal -->
-<div class="modal" id="modal">
-  <div class="modal-content">
-    <button class="close-btn" id="closeBtn">&times;</button>
-    <h2 id="modalTitle"></h2>
-    <p id="modalContent"></p>
-  </div>
-</div>
+</div> <!-- page-wrapper -->
 
 <script>
-const promos = document.querySelectorAll('.promo');
-const modal = document.getElementById('modal');
-const modalTitle = document.getElementById('modalTitle');
-const modalContent = document.getElementById('modalContent');
-const closeBtn = document.getElementById('closeBtn');
+  // Modal JS
+  const promos = document.querySelectorAll('.promo');
+  const modal = document.getElementById('modal');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalContent = document.getElementById('modalContent');
+  const closeBtn = document.getElementById('closeBtn');
 
-promos.forEach(promo => {
-  promo.addEventListener('click', () => {
-    modalTitle.textContent = promo.dataset.title;
-    modalContent.textContent = promo.dataset.content;
-    modal.classList.add('show');
-    modal.style.display = 'flex';
+  promos.forEach(promo => {
+    promo.addEventListener('click', () => {
+      modalTitle.textContent = promo.getAttribute('data-title');
+      modalContent.textContent = promo.getAttribute('data-content');
+      modal.style.display = 'flex';
+      modal.classList.add('show');
+    });
   });
-});
 
-closeBtn.addEventListener('click', () => {
-  modal.classList.remove('show');
-  setTimeout(() => { modal.style.display = 'none'; }, 300);
-});
-
-modal.addEventListener('click', (e) => {
-  if (e.target === modal) {
+  closeBtn.addEventListener('click', () => {
     modal.classList.remove('show');
-    setTimeout(() => { modal.style.display = 'none'; }, 300);
-  }
-});
+    setTimeout(() => modal.style.display = 'none', 300);
+  });
+
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.remove('show');
+      setTimeout(() => modal.style.display = 'none', 300);
+    }
+  });
+
+  // Header scroll effect
+  window.addEventListener('scroll', () => {
+    const header = document.querySelector('.header');
+    if (window.scrollY > 100) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+  });
 </script>
 
 </body>
