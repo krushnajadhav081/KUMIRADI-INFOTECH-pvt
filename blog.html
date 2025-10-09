@@ -326,6 +326,28 @@
     </div>
   </section>
 
+ <!-- WhatsApp Floating Widget -->
+     <img src="" alt="">
+    <div class="whatsapp-widget" id="whatsapp-widget">
+        <div class="whatsapp-main" id="whatsapp-main">
+            <i class="fab fa-whatsapp"></i>
+        </div>
+        <div class="whatsapp-options" id="whatsapp-options">
+            <a href="tel:+917020459931" class="whatsapp-option call">
+                <i class="fas fa-phone"></i>
+                <span>Call</span>
+            </a>
+            <a href="https://wa.me/917020459931" target="_blank" class="whatsapp-option whatsapp">
+                <i class="fab fa-whatsapp"></i>
+                <span>WhatsApp</span>
+            </a>
+            <a href="sms:+919876543210" class="whatsapp-option sms">
+                <i class="fas fa-sms"></i>
+                <span>SMS</span>
+            </a>
+        </div>
+    </div>
+
   <!-- ===== POPUP MODAL ===== -->
   <div id="blogPopup" class="popup-overlay">
     <div class="popup-content">
@@ -452,6 +474,24 @@ function closeMobileMenu() {
     mobileNav.style.display = 'none';
     menuIcon.className = 'fas fa-bars';
 }
+
+
+// WhatsApp widget toggle
+        const whatsappMain = document.getElementById('whatsapp-main');
+        const whatsappOptions = document.getElementById('whatsapp-options');
+        const whatsappWidget = document.getElementById('whatsapp-widget');
+
+        whatsappMain.addEventListener('click', () => {
+            whatsappWidget.classList.toggle('active');
+        });
+
+        // Close WhatsApp options when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!whatsappWidget.contains(e.target)) {
+                whatsappWidget.classList.remove('active');
+            }
+        });
+
 
 // Testimonial Slider
 const testimonials = [

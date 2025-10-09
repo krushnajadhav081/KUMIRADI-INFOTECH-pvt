@@ -14,7 +14,7 @@
       text-align: center;
       margin-top: 30px;
     }
-
+    
     .services-banner h3 {
       font-size: 1.5rem;
       font-weight: 600;
@@ -77,46 +77,72 @@
 
 <body>
   <!-- Header -->
-  <header class="header">
-    <div class="container">
-      <div class="nav-wrapper">
-        <div class="logo">
-          <h1>KUMIRADI <span>Infotech</span></h1>
-        </div>
-
-        <nav class="nav-desktop">
-          <a href="index.html">Home</a>
-          <a href="about.html">About</a>
-          <a href="services.html">Services</a>
-          <a href="portfolio.html">Portfolio</a>
-          <a href="blog.html">Blog</a>
-          <a href="contact.html">Contact</a>
-        </nav>
-
-        <div class="nav-cta">
-          <button class="btn-primary"><i class="fas fa-phone"></i> Call: +91-9798990420</button>
-        </div>
-
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-          <i class="fas fa-bars" id="menu-icon"></i>
-        </button>
+  <!-- Header -->
+<header class="header">
+  <div class="container">
+    <div class="nav-wrapper">
+      <!-- Logo -->
+      <div class="logo">
+        <h1>KUMIRADI <span>Infotech</span></h1>
       </div>
 
-      <nav class="nav-mobile" id="mobileNav">
-        <a href="index.html" onclick="closeMobileMenu()">Home</a>
-        <a href="about.html" onclick="closeMobileMenu()">About</a>
-        <a href="services.html" onclick="closeMobileMenu()">Services</a>
-        <a href="portfolio.html" onclick="closeMobileMenu()">Portfolio</a>
-        <a href="blog.html" onclick="closeMobileMenu()">Blog</a>
-        <a href="contact.html" onclick="closeMobileMenu()">Contact</a>
-        <button class="btn-primary mobile-cta"><i class="fas fa-phone"></i> Call: +91-9798990420</button>
+      <!-- Desktop Navigation -->
+      <nav class="nav-desktop">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
       </nav>
+
+      <!-- Call-to-action Button -->
+      <div class="nav-cta">
+        <a href="tel:+919798990420" class="btn-primary"><i class="fas fa-phone"></i> +91-9798990420</a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <i class="fas fa-bars" id="menu-icon"></i>
+      </button>
     </div>
-  </header>
+
+    <!-- Mobile Navigation -->
+    <nav class="nav-mobile" id="mobileNav">
+      <a href="index.html" onclick="closeMobileMenu()">Home</a>
+      <a href="about.html" onclick="closeMobileMenu()">About</a>
+      <a href="services.html" onclick="closeMobileMenu()">Services</a>
+      <a href="portfolio.html" onclick="closeMobileMenu()">Portfolio</a>
+      <a href="blog.html" onclick="closeMobileMenu()">Blog</a>
+      <a href="contact.html" onclick="closeMobileMenu()">Contact</a>
+      <a href="tel:+919798990420" class="btn-primary mobile-cta"><i class="fas fa-phone"></i> +91-9798990420</a>
+    </nav>
+  </div>
+</header>
 
 
 
-  
+ <!-- WhatsApp Floating Widget -->
+     <img src="" alt="">
+    <div class="whatsapp-widget" id="whatsapp-widget">
+        <div class="whatsapp-main" id="whatsapp-main">
+            <i class="fab fa-whatsapp"></i>
+        </div>
+        <div class="whatsapp-options" id="whatsapp-options">
+            <a href="tel:+917020459931" class="whatsapp-option call">
+                <i class="fas fa-phone"></i>
+                <span>Call</span>
+            </a>
+            <a href="https://wa.me/917020459931" target="_blank" class="whatsapp-option whatsapp">
+                <i class="fab fa-whatsapp"></i>
+                <span>WhatsApp</span>
+            </a>
+            <a href="sms:+919876543210" class="whatsapp-option sms">
+                <i class="fas fa-sms"></i>
+                <span>SMS</span>
+            </a>
+        </div>
+    </div>
   
   <!-- Services Section -->
   <section id="services" class="services-section">
@@ -283,6 +309,24 @@
       mobileNav.style.display = 'none';
       document.getElementById('menu-icon').className = 'fas fa-bars';
     }
+
+
+// WhatsApp widget toggle
+        const whatsappMain = document.getElementById('whatsapp-main');
+        const whatsappOptions = document.getElementById('whatsapp-options');
+        const whatsappWidget = document.getElementById('whatsapp-widget');
+
+        whatsappMain.addEventListener('click', () => {
+            whatsappWidget.classList.toggle('active');
+        });
+
+        // Close WhatsApp options when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!whatsappWidget.contains(e.target)) {
+                whatsappWidget.classList.remove('active');
+            }
+        });
+
 
     // ===== MODAL =====
     const learnButtons = document.querySelectorAll('.learn-more');
