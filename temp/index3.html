@@ -4,9 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KUMIRADI INFOTECH - Building Digital Success at Affordable Rates</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/script.js">
     <!-- Font Awesome for icons -->
     <style>
+        
+  body {
+    cursor: none; /* hide default cursor */
+  }
+
+  .cursor-follower {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #00b4d8;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: screen;
+    box-shadow: 0 0 15px rgba(0, 180, 216, 0.6);
+    z-index: 9999; /* make sure it's visible above everything */
+  }
+
         .logo-text {
       font-size: 20px;
       font-weight: bold;
@@ -20,7 +43,7 @@
     </style>
 </head>
 <body>
-    <!-- Fixed Navigation -->
+   <div class="cursor-follower" id="cursor"></div> <!-- Fixed Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">

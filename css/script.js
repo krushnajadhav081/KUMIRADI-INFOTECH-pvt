@@ -1,24 +1,4 @@
-<!doctype html>
-<html>
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Cursor Trail</title>
-  <style>
-    html,body{height:100%;margin:0;cursor:none;background:#081229;overflow:hidden;}
-    .trail-dot {
-      position:fixed;
-      width:14px;height:14px;border-radius:50%;
-      background:rgba(99,102,241,0.95);
-      pointer-events:none;
-      transform:translate(-50%,-50%);
-      will-change:transform, opacity;
-      box-shadow:0 6px 20px rgba(59,130,246,0.12);
-    }
-  </style>
-</head>
-<body>
-  <script>
+ 
     const COUNT = 12; // number of dots in the trail
     const dots = [];
     for(let i=0;i<COUNT;i++){
@@ -56,6 +36,3 @@
     window.addEventListener('resize', () => {
       for(const d of dots){ d.x = window.innerWidth/2; d.y = window.innerHeight/2; }
     });
-  </script>
-</body>
-</html>
