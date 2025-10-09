@@ -1,61 +1,85 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Cursor Trail</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Social Icons</title>
   <style>
-    html,body{height:100%;margin:0;cursor:none;background:#081229;overflow:hidden;}
-    .trail-dot {
-      position:fixed;
-      width:14px;height:14px;border-radius:50%;
-      background:rgba(99,102,241,0.95);
-      pointer-events:none;
-      transform:translate(-50%,-50%);
-      will-change:transform, opacity;
-      box-shadow:0 6px 20px rgba(59,130,246,0.12);
+    body {
+      background-color: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .social-container {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-link {
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .social-link:hover {
+      transform: scale(1.25);
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .social-link svg {
+      width: 24px;
+      height: 24px;
+      fill: white;
+    }
+
+    /* Optional brand hover colors */
+    .linkedin:hover { background-color: #0077b5; }
+    .twitter:hover { background-color: #1da1f2; }
+    .github:hover { background-color: #333; }
+    .instagram:hover { 
+      background: radial-gradient(circle at 30% 107%, #fdf497 0%, 
+      #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
     }
   </style>
 </head>
 <body>
-  <script>
-    const COUNT = 12; // number of dots in the trail
-    const dots = [];
-    for(let i=0;i<COUNT;i++){
-      const d = document.createElement('div');
-      d.className = 'trail-dot';
-      document.body.appendChild(d);
-      dots.push({el:d, x:window.innerWidth/2, y:window.innerHeight/2});
-    }
+  <div class="social-container">
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com" target="_blank" class="social-link linkedin">
+      <svg viewBox="0 0 24 24">
+        <path d="M19 0h-14C2.239 0 0 2.239 0 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5V5c0-2.761-2.239-5-5-5zM8.339 18.339H5.662V9h2.677v9.339zM7 7.828c-.855 0-1.548-.694-1.548-1.549 0-.855.693-1.548 1.548-1.548s1.549.693 1.549 1.548c0 .855-.694 1.549-1.549 1.549zM18.338 18.339h-2.676v-4.63c0-1.104-.021-2.525-1.538-2.525-1.54 0-1.777 1.203-1.777 2.445v4.71H9.671V9h2.57v1.276h.037c.358-.676 1.23-1.387 2.533-1.387 2.712 0 3.227 1.784 3.227 4.103v5.347z"/>
+      </svg>
+    </a>
 
-    let mouse = {x: window.innerWidth/2, y: window.innerHeight/2};
-    window.addEventListener('pointermove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+    <!-- Twitter -->
+    <a href="https://twitter.com" target="_blank" class="social-link twitter">
+      <svg viewBox="0 0 24 24">
+        <path d="M24 4.557a9.835 9.835 0 01-2.828.775 4.932 4.932 0 002.165-2.724c-.951.564-2.005.974-3.127 1.195a4.918 4.918 0 00-8.384 4.482C7.69 8.095 4.066 6.13 1.64 3.161a4.822 4.822 0 00-.666 2.475 4.918 4.918 0 002.188 4.096 4.903 4.903 0 01-2.228-.616v.062a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.224.085 4.93 4.93 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.395 0-.787-.023-1.175-.068A13.945 13.945 0 007.548 21c9.142 0 14.307-7.721 13.995-14.646A9.935 9.935 0 0024 4.557z"/>
+      </svg>
+    </a>
 
-    function animate(){
-      // lead follows mouse
-      dots[0].x += (mouse.x - dots[0].x) * 0.35;
-      dots[0].y += (mouse.y - dots[0].y) * 0.35;
-      // each dot follows the previous dot
-      for(let i=1;i<dots.length;i++){
-        const prev = dots[i-1];
-        dots[i].x += (prev.x - dots[i].x) * (0.25 + i*0.01);
-        dots[i].y += (prev.y - dots[i].y) * (0.25 + i*0.01);
-      }
-      // apply styles
-      for(let i=0;i<dots.length;i++){
-        const o = 1 - i/(dots.length+2); // fade tail
-        const scale = 1 - i*0.04;
-        dots[i].el.style.transform = `translate(${dots[i].x}px, ${dots[i].y}px) translate(-50%,-50%) scale(${scale})`;
-        dots[i].el.style.opacity = o;
-      }
-      requestAnimationFrame(animate);
-    }
-    requestAnimationFrame(animate);
+    <!-- GitHub -->
+    <a href="https://github.com" target="_blank" class="social-link github">
+      <svg viewBox="0 0 24 24">
+        <path d="M12 .297a12 12 0 00-3.793 23.406c.6.111.82-.261.82-.579v-2.234c-3.338.726-4.042-1.609-4.042-1.609-.547-1.387-1.336-1.758-1.336-1.758-1.089-.745.083-.729.083-.729 1.205.084 1.84 1.237 1.84 1.237 1.07 1.834 2.808 1.304 3.493.997.108-.775.418-1.305.762-1.605-2.665-.304-5.467-1.334-5.467-5.932 0-1.31.469-2.382 1.236-3.221-.124-.303-.536-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.51 11.51 0 016.003 0c2.292-1.552 3.3-1.23 3.3-1.23.653 1.653.242 2.873.118 3.176.768.839 1.235 1.911 1.235 3.221 0 4.61-2.807 5.625-5.479 5.921.43.37.814 1.102.814 2.222v3.293c0 .321.218.694.825.576A12 12 0 0012 .297z"/>
+      </svg>
+    </a>
 
-    // responsive: on resize reposition dots
-    window.addEventListener('resize', () => {
-      for(const d of dots){ d.x = window.innerWidth/2; d.y = window.innerHeight/2; }
-    });
-  </script>
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/kumiradi.infotech?igsh=dTg2bmdncnY1enEx" target="_blank" class="social-link instagram">
+      <svg viewBox="0 0 24 24">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.581 4.908 4.85.058 1.267.068 1.647.068 4.854 0 3.207-.01 3.585-.068 4.849-.137 3.264-1.657 4.771-4.908 4.909-1.267.058-1.647.07-4.85.07s-3.585-.012-4.85-.07c-3.252-.148-4.771-1.581-4.907-4.85-.058-1.267-.07-1.645-.07-4.854 0-3.207.012-3.584.07-4.849.137-3.264 1.657-4.771 4.907-4.909 1.267-.058 1.647-.07 4.85-.07zM12 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM17.882 5.727a1.45 1.45 0 100-2.9 1.45 1.45 0 000 2.9z"/>
+      </svg>
+    </a>
+  </div>
 </body>
 </html>
