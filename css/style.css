@@ -587,116 +587,128 @@ flex-direction: row-reverse;
 }
 
 /* Services Section */
-.services-section {
-    padding: 5rem 0;
-    background: #f9fafb;
-}
-
-.section-header {
-    text-align: center;
-    margin-bottom: 4rem;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.section-description {
-    font-size: 1.125rem;
-    color: #6b7280;
-    line-height: 1.6;
-}
-
 .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically if height is set */
+    gap: 30px; /* Adds space between cards */
+    max-width: 1200px; /* Optional: limits total width */
+    margin: 0 auto; /* Centers the grid container */
+    padding: 40px 20px;
 }
 
 .service-card {
-    background: white;
-    border-radius: 1rem;
-    padding: 2rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    width: 350px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease;
 }
 
 .service-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-}
-
-.service-image {
-    margin-bottom: 1.5rem;
-    border-radius: 0.75rem;
-    overflow: hidden;
+    transform: translateY(-5px);
 }
 
 .service-image img {
     width: 100%;
-    height: 12rem;
+    height: 200px;
     object-fit: cover;
-    transition: transform 0.3s ease;
 }
 
-.service-card:hover .service-image img {
-    transform: scale(1.05);
+.service-content {
+    padding: 20px;
 }
 
 .service-icon {
-    width: 3rem;
-    height: 3rem;
-    background: #dbeafe;
-    border-radius: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #3b82f6;
-    margin-bottom: 1rem;
-    transition: all 0.3s ease;
-}
-
-.service-card:hover .service-icon {
-    background: #3b82f6;
-    color: white;
-}
-
-.service-content h3 {
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-    color: #1f2937;
-}
-
-.service-content p {
-    color: #6b7280;
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
+    font-size: 2rem;
+    color: #007bff;
+    margin-bottom: 10px;
 }
 
 .services-cta {
     text-align: center;
-    margin-bottom: 5rem;
+    margin: 40px 0;
 }
 
+.services-cta .btn-primary {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.services-cta .btn-primary:hover {
+    background: #0056b3;
+}
+
+/* Banner Section */
 .services-banner {
-    background: linear-gradient(135deg, #3b82f6, #1e40af);
-    border-radius: 1rem;
-    padding: 3rem 2rem;
     text-align: center;
-    color: white;
+    max-width: 900px;
+    margin: 60px auto; /* centers horizontally */
+    padding: 40px 20px;
+    background: #f8f9fa;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
 .services-banner h3 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 15px;
 }
 
 .services-banner p {
-    font-size: 1.125rem;
-    margin-bottom: 2rem;
-    opacity: 0.9;
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
 }
+
+.services-banner .btn-secondary {
+    background: transparent;
+    border: 2px solid #007bff;
+    color: #007bff;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.services-section {
+  padding-bottom: 80px; /* adds space inside the section */
+}
+
+
+.services-banner .btn-secondary:hover {
+    background: #007bff;
+    color: #fff;
+}
+
+
+.btn-outline {
+    background: transparent;
+    border: 1.5px solid #007bff;
+    color: #007bff;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    background: #007bff;
+    color: #fff;
+}
+
 
 /* Portfolio Section */
 .portfolio-section {

@@ -1,342 +1,670 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KUMIRADI Infotech Blog</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link rel="stylesheet" href="css/style.css">
-  <style>
-    /* Root variables */
-    :root {
-      --size: 30vmin;
-      --duration: 300ms;
-      --ease-out: cubic-bezier(0.25, 1, 0.5, 1);
-      --bounce-out: cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KUMIRADI Infotech - Services</title>
+  <link rel="stylesheet" href="css/style.css">k
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
 
-    * { box-sizing: border-box; margin:0; padding:0; }
-    html, body { height: 100%; }
+      <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <h1>KUMIRADI <span>Infotech</span></h1>
+                </div>
+                
+                <nav class="nav-desktop">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="services.html">Services</a>
+                    <a href="portfolio.html">Portfolio</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+                
+                <div class="nav-cta">
+                    <button class="btn-primary">
+                        <i class="fas fa-phone"></i>
+                        Call: +91-9798990420
+                    </button>
+                </div>
+                
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars" id="menu-icon"></i>
+                </button>
+            </div>
+            
+            <nav class="nav-mobile" id="mobileNav">
+                <a href="index.html" onclick="closeMobileMenu()">Home</a>
+                <a href="about.html" onclick="closeMobileMenu()">About</a>
+                <a href="services.html" onclick="closeMobileMenu()">Services</a>
+                <a href="portfolio.html" onclick="closeMobileMenu()">Portfolio</a>
+                <a href="blog.html" onclick="closeMobileMenu()">Blog</a>
+                <a href="contact.html" onclick="closeMobileMenu()">Contact</a>
+                <button class="btn-primary mobile-cta">
+                    <i class="fas fa-phone"></i>
+                    Call: +91-9798990420
+                </button>
+            </nav>
+        </div>
+    </header>
+  <style>
+    /* ----------- GENERAL STYLES ----------- */
     body {
-      display: flex;
-      flex-direction: column;
-      font-family: "Sura", sans-serif;
-      background-color: #ffffff;
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fff;
       color: #333;
     }
-
-    .page-wrapper {
-      display: flex;
-      flex-direction: column;
-      flex: 1; /* grow to push footer down */
-    }
-
-    /* Header */
-    .header {
-      background: #fff;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
-    }
-    .header.scrolled { background-color: rgba(255,255,255,0.95); backdrop-filter: blur(10px); }
-
-    .nav-desktop a { margin-left: 1rem; text-decoration: none; color: #333; font-weight: 500; }
-    .btn-primary { background: #ff4081; color: #fff; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; }
-
-    /* Blog Section */
-    .blog-section {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-      width: 100%;
+    .container {
+      width: 90%;
       max-width: 1200px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+      margin: auto;
     }
 
-    .promo {
-      position: relative;
-      width: var(--size);
-      height: var(--size);
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      overflow: hidden;
-      border-radius: 20px;
-      transition: transform var(--duration) var(--ease-out);
-    }
 
-    .promo .image-wrapper {
-      position: absolute;
-      top:0; left:0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      clip-path: polygon(100% 0, 100% 50%, 100% 100%, 0% 100%, 0 50%, 0% 0%);
-      transition: transform var(--duration) var(--ease-out), clip-path var(--duration) var(--ease-out);
-    }
 
-    .promo .image-wrapper img {
-      width: 120%;
-      height: 100%;
-      object-fit: cover;
-      transform: translateX(-10%);
-      transition: transform var(--duration) var(--ease-out);
+    /* ----------- SERVICES GRID ----------- */
+    .services-section {
+      padding: 60px 0;
+      text-align: center;
     }
-
-    .promo .image-wrapper::after {
-      content: "";
-      position: absolute;
-      top:0; left:0;
-      width: 100%;
-      height: 100%;
-      background-color: var(--overlay-color, #000);
-      mix-blend-mode: multiply;
-      opacity: 0;
-      transition: opacity var(--duration) var(--ease-out);
-    }
-
-    .promo .title {
-      position: relative;
-      z-index: 2;
+    .section-header h2 {
       font-size: 2rem;
-      font-weight: 700;
-      padding: 1rem;
-      pointer-events: none;
-      transition: transform var(--duration) var(--ease-out);
+      margin-bottom: 10px;
     }
-
-    .title::after {
-      content: attr(data-cta);
-      display: block;
-      font-weight: 400;
+    .section-header p {
+      color: #777;
       font-size: 1rem;
-      opacity: 0;
-      margin-top: 0.5rem;
-      transform: translateX(-25%);
-      transition: transform var(--duration) var(--ease-out), opacity var(--duration) var(--ease-out);
     }
 
-    .promo:hover .image-wrapper img { transform: translateX(0); }
-    .promo:hover .image-wrapper {
-      clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
-      transform: translateX(25%);
-      transition-timing-function: var(--bounce-out);
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
     }
-    .promo:hover .title { transform: translateX(5%); transition-timing-function: var(--bounce-out); }
-    .promo:hover .title::after { opacity: 1; transform: translateX(0); transition-timing-function: var(--bounce-out); }
-    .promo:hover .image-wrapper::after { opacity: 0.6; }
 
-    @media screen and (max-width: 1024px) { :root { --size: 35vmin; } }
-    @media screen and (max-width: 768px) { 
-      .blog-section { flex-direction: column; align-items: center; } 
-      :root { --size: 70vmin; } 
+    .service-card {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      text-align: center;
+      transition: all 0.3s ease;
     }
-    @media screen and (max-width: 480px) { :root { --size: 80vmin; } }
+    .service-card:hover {
+      transform: translateY(-10px);
+    }
 
-    /* Modal Styles */
-    .modal {
-      display: none;
+    .service-image img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .service-content {
+      padding: 20px;
+    }
+
+    .service-icon i {
+      font-size: 30px;
+      color: #007bff;
+      margin-bottom: 10px;
+    }
+
+    .service-content h3 {
+      font-size: 1.3rem;
+      margin: 10px 0;
+    }
+
+    .service-content p {
+      color: #555;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #007bff;
+      color: #007bff;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: all 0.3s ease;
+    }
+    .btn-outline:hover {
+      background: #007bff;
+      color: #fff;
+    }
+
+    /* ----------- POPUP MODAL ----------- */
+    .popup-overlay {
       position: fixed;
-      top:0; left:0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0,0,0,0.8);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
       justify-content: center;
       align-items: center;
-      z-index: 100;
-      padding: 2rem;
+      z-index: 1000;
     }
 
-    .modal-content {
-      background: #1d1e22;
-      padding: 2rem;
-      border-radius: 15px;
+    .popup-content {
+      background: #fff;
+      width: 90%;
       max-width: 600px;
-      width: 100%;
-      color: #fff;
-      text-align: center;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 0.4s ease;
       position: relative;
-      transform: scale(0.8);
-      opacity: 0;
-      transition: all 0.3s ease-in-out;
     }
 
-    .modal.show .modal-content { transform: scale(1); opacity: 1; }
+    .popup-content img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
 
-    .close-btn {
+    .popup-body {
+      padding: 25px;
+      text-align: center;
+    }
+
+    .popup-body h3 {
+      font-size: 1.5rem;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .popup-body p {
+      color: #555;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .popup-close {
       position: absolute;
       top: 10px;
-      right: 15px;
-      font-size: 1.5rem;
+      right: 20px;
+      font-size: 28px;
+      color: #333;
       cursor: pointer;
-      background: none;
-      border: none;
-      color: #fff;
+      transition: 0.3s;
+    }
+    .popup-close:hover {
+      color: #007bff;
     }
 
-    /* Footer */
-    .footer {
-      background-color: #1d1e22;
-      color: #fff;
-      padding: 2rem 1rem;
-      flex-shrink: 0;
+    @keyframes fadeIn {
+      from {opacity: 0; transform: scale(0.9);}
+      to {opacity: 1; transform: scale(1);}
     }
-    .footer h3, .footer h4, .footer h5 { color: #fff; }
-    .footer a { color: #fff; text-decoration: none; }
-    .footer a:hover { text-decoration: underline; }
 
-    .footer .container { max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; gap: 2rem; }
-    .footer-section { flex: 1 1 250px; }
-    .footer-bottom { text-align: center; margin-top: 2rem; border-top: 1px solid #444; padding-top: 1rem; font-size: 0.9rem; }
-    .social-links a { margin-right: 0.5rem; }
+    /* ----------- FOOTER ----------- */
+    footer {
+      background: #111;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 60px;
+    }
   </style>
 </head>
+
 <body>
 
-<div class="page-wrapper">
-
-  <!-- Header -->
-  <header class="header">
-    <div class="logo"><h1>KUMIRADI <span>Infotech</span></h1></div>
-    <nav class="nav-desktop">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="services.html">Services</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="blog.html">Blog</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    <button class="btn-primary"><i class="fas fa-phone"></i> Call: +91-9798990420</button>
-  </header>
-
-  <!-- Blog Section -->
-  <div class="blog-section">
-
-    <div class="promo" style="--overlay-color: hotpink;" data-title="AI & Technology" data-content="The Future of AI in Business.">
-      <div class="image-wrapper"><img src="https://images.unsplash.com/photo-1697577418970-95d99b5a55cf?crop=entropy&cs=srgb&fm=jpg" alt="AI Technology"></div>
-      <h2 class="title" data-cta="Read More →">AI & Technology</h2>
-    </div>
-
-    <div class="promo" style="--overlay-color: yellow;" data-title="Cybersecurity" data-content="Building robust cybersecurity.">
-      <div class="image-wrapper"><img src="https://images.unsplash.com/photo-1674027444485-cec3da58eef4?crop=entropy&cs=srgb&fm=jpg" alt="Cybersecurity"></div>
-      <h2 class="title" data-cta="Read More →">Cybersecurity</h2>
-    </div>
-
-    <div class="promo" style="--overlay-color: dodgerblue;" data-title="Cloud Technology" data-content="Cloud migration best practices.">
-      <div class="image-wrapper"><img src="https://images.unsplash.com/photo-1648737966636-2fc3a5fffc8a?crop=entropy&cs=srgb&fm=jpg" alt="Cloud Technology"></div>
-      <h2 class="title" data-cta="Read More →">Cloud Technology</h2>
-    </div>
-
-    <div class="promo" style="--overlay-color: darkgreen;" data-title="Training & Development" data-content="Machine learning programs.">
-      <div class="image-wrapper"><img src="https://images.unsplash.com/photo-1579403124614-197f69d8187b?crop=entropy&cs=srgb&fm=jpg" alt="Training & Development"></div>
-      <h2 class="title" data-cta="Read More →">Training & Development</h2>
-    </div>
-
-  </div>
-
-  <!-- Modal -->
-  <div class="modal" id="modal">
-    <div class="modal-content">
-      <button class="close-btn" id="closeBtn">&times;</button>
-      <h2 id="modalTitle"></h2>
-      <p id="modalContent"></p>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <footer class="footer">
+  <!-- ===== SERVICES SECTION ===== -->
+  <section id="services" class="services-section">
     <div class="container">
-      <div class="footer-section">
-        <h3>KUMIRADI <span>Infotech</span></h3>
-        <p>Innovative solutions in software development, IT infrastructure, AI training, and digital transformation.</p>
-        <div class="social-links">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-        </div>
+      <div class="section-header">
+        <p class="section-subtitle">What We Offer</p>
+        <h2 class="section-title">Our Expertise and Services</h2>
       </div>
-      <div class="footer-section">
-        <h4>Our Services</h4>
-        <ul>
-          <li><a href="#"><i class="fas fa-arrow-right"></i> Software Development</a></li>
-          <li><a href="#"><i class="fas fa-arrow-right"></i> AI & ML Training</a></li>
-          <li><a href="#"><i class="fas fa-arrow-right"></i> Web Development</a></li>
-          <li><a href="#"><i class="fas fa-arrow-right"></i> Cybersecurity</a></li>
-          <li><a href="#"><i class="fas fa-arrow-right"></i> IT Infrastructure</a></li>
-          <li><a href="#"><i class="fas fa-arrow-right"></i> Digital Transformation</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="#"><i class="fas fa-arrow-right"></i> About Us</a></li>
-          <li><a href="#"><i class="fas fa-arrow-right"></i> Our Services</a></li>
-          <li><a href="#"><i class="fas fa-arrow-right"></i> Portfolio</a></li>
-          <li><a href="#"><i class="fas fa-arrow-right"></i> Blog</a></li>
-          <li><a href="#"><i class="fas fa-arrow-right"></i> Careers</a></li>
-          <li><a href="#"><i class="fas fa-arrow-right"></i> Contact Us</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h4>Stay Updated</h4>
-        <div class="newsletter">
-          <input type="email" placeholder="Enter your email">
-          <button class="btn-primary">Subscribe Now</button>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 KUMIRADI Infotech India Pvt. Ltd. All rights reserved.</p>
-    </div>
-  </footer>
 
-</div> <!-- page-wrapper -->
+      <div class="services-grid">
+        <!-- CARD 1 -->
+        <div class="service-card">
+          <div class="service-image">
+            <img src="https://images.unsplash.com/photo-1579403124614-197f69d8187b?auto=format&q=80" alt="Software Development">
+          </div>
+          <div class="service-content">
+            <div class="service-icon"><i class="fas fa-code"></i></div>
+            <h3>Software Development</h3>
+            <p>Custom software solutions that drive efficiency and growth.</p>
+            <button class="btn-outline" onclick="openPopup('Software Development', 'We build scalable and high-performance software tailored to your business needs.', 'https://images.unsplash.com/photo-1579403124614-197f69d8187b?auto=format&q=80')">
+              Learn More <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="service-card">
+          <div class="service-image">
+            <img src="https://images.unsplash.com/photo-1610563166150-b34df4f3bcd6?auto=format&q=80" alt="Web Development">
+          </div>
+          <div class="service-content">
+            <div class="service-icon"><i class="fas fa-globe"></i></div>
+            <h3>Web Development</h3>
+            <p>Responsive, fast, and SEO-optimized websites for your brand.</p>
+            <button class="btn-outline" onclick="openPopup('Web Development', 'We create stunning, responsive websites optimized for user engagement and SEO success.', 'https://images.unsplash.com/photo-1610563166150-b34df4f3bcd6?auto=format&q=80')">
+              Learn More <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="service-card">
+          <div class="service-image">
+            <img src="https://images.unsplash.com/photo-1697577418970-95d99b5a55cf?auto=format&q=80" alt="AI & ML Training">
+          </div>
+          <div class="service-content">
+            <div class="service-icon"><i class="fas fa-brain"></i></div>
+            <h3>AI & ML Training</h3>
+            <p>Upskill with real-world AI and machine learning programs.</p>
+            <button class="btn-outline" onclick="openPopup('AI & ML Training', 'Comprehensive AI and Machine Learning training designed for students and professionals to build future-ready skills.', 'https://images.unsplash.com/photo-1697577418970-95d99b5a55cf?auto=format&q=80')">
+              Learn More <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="service-card">
+          <div class="service-image">
+            <img src="https://images.unsplash.com/photo-1674027444485-cec3da58eef4?auto=format&q=80" alt="Cybersecurity">
+          </div>
+          <div class="service-content">
+            <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+            <h3>Cybersecurity</h3>
+            <p>Protect your business from modern cyber threats effectively.</p>
+            <button class="btn-outline" onclick="openPopup('Cybersecurity', 'Advanced cybersecurity strategies to protect your systems, networks, and data from threats.', 'https://images.unsplash.com/photo-1674027444485-cec3da58eef4?auto=format&q=80')">
+              Learn More <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- CARD 5 -->
+        <div class="service-card">
+          <div class="service-image">
+            <img src="https://images.unsplash.com/photo-1648737966636-2fc3a5fffc8a?auto=format&q=80" alt="IT Infrastructure">
+          </div>
+          <div class="service-content">
+            <div class="service-icon"><i class="fas fa-database"></i></div>
+            <h3>IT Infrastructure</h3>
+            <p>Build reliable IT systems that power your enterprise smoothly.</p>
+            <button class="btn-outline" onclick="openPopup('IT Infrastructure', 'Expert IT infrastructure services that ensure reliability, scalability, and performance for your organization.', 'https://images.unsplash.com/photo-1648737966636-2fc3a5fffc8a?auto=format&q=80')">
+              Learn More <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- CARD 6 -->
+        <div class="service-card">
+          <div class="service-image">
+            <img src="https://images.unsplash.com/photo-1694903110330-cc64b7e1d21d?auto=format&q=80" alt="Digital Transformation">
+          </div>
+          <div class="service-content">
+            <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+            <h3>Digital Transformation</h3>
+            <p>Transform your business with next-gen digital solutions.</p>
+            <button class="btn-outline" onclick="openPopup('Digital Transformation', 'We help organizations adopt cutting-edge digital technologies to modernize processes and boost productivity.', 'https://images.unsplash.com/photo-1694903110330-cc64b7e1d21d?auto=format&q=80')">
+              Learn More <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== POPUP MODAL ===== -->
+  <div id="blogPopup" class="popup-overlay">
+    <div class="popup-content">
+      <span class="popup-close" onclick="closePopup()">&times;</span>
+      <img id="popupImage" src="" alt="">
+      <div class="popup-body">
+        <h3 id="popupTitle"></h3>
+        <p id="popupText"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+   <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>KUMIRADI <span>Infotech</span></h3>
+                    <p>A forward-thinking technology company offering innovative solutions in software development, IT infrastructure, AI training and digital transformation.</p>
+                    
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+91-9798990420</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@kumiradiinfotech.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Technology Hub, Innovation District<br>Mumbai, Maharashtra, India</span>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> Software Development</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> AI & ML Training</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> Web Development</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> Cybersecurity</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> IT Infrastructure</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> Digital Transformation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> About Us</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> Our Services</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> Portfolio</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> Blog</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> Careers</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Stay Updated</h4>
+                    <p>Subscribe to our newsletter for the latest technology trends and insights.</p>
+                    
+                    <div class="newsletter">
+                        <input type="email" placeholder="Enter your email">
+                        <button class="btn-primary">Subscribe Now</button>
+                    </div>
+                    
+                    <div class="business-hours">
+                        <h5>Business Hours</h5>
+                        <p>Mon - Fri: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 4:00 PM<br>Sunday: Closed</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 KUMIRADI Infotech India Pvt. Ltd. All rights reserved.</p>
+                    <div class="footer-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
 
 <script>
-  // Modal JS
-  const promos = document.querySelectorAll('.promo');
-  const modal = document.getElementById('modal');
-  const modalTitle = document.getElementById('modalTitle');
-  const modalContent = document.getElementById('modalContent');
-  const closeBtn = document.getElementById('closeBtn');
-
-  promos.forEach(promo => {
-    promo.addEventListener('click', () => {
-      modalTitle.textContent = promo.getAttribute('data-title');
-      modalContent.textContent = promo.getAttribute('data-content');
-      modal.style.display = 'flex';
-      modal.classList.add('show');
-    });
-  });
-
-  closeBtn.addEventListener('click', () => {
-    modal.classList.remove('show');
-    setTimeout(() => modal.style.display = 'none', 300);
-  });
-
-  window.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      modal.classList.remove('show');
-      setTimeout(() => modal.style.display = 'none', 300);
+    // Mobile Menu Toggle
+function toggleMobileMenu() {
+    const mobileNav = document.getElementById('mobileNav');
+    const menuIcon = document.getElementById('menu-icon');
+    
+    if (mobileNav.classList.contains('show')) {
+        mobileNav.classList.remove('show');
+        mobileNav.style.display = 'none';
+        menuIcon.className = 'fas fa-bars';
+    } else {
+        mobileNav.classList.add('show');
+        mobileNav.style.display = 'flex';
+        menuIcon.className = 'fas fa-times';
     }
-  });
+}
 
-  // Header scroll effect
-  window.addEventListener('scroll', () => {
+function closeMobileMenu() {
+    const mobileNav = document.getElementById('mobileNav');
+    const menuIcon = document.getElementById('menu-icon');
+    
+    mobileNav.classList.remove('show');
+    mobileNav.style.display = 'none';
+    menuIcon.className = 'fas fa-bars';
+}
+
+// Testimonial Slider
+const testimonials = [
+    {
+        name: "Rajesh Kumar",
+        company: "TechVision Solutions",
+        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
+        text: "My company, TechVision Solutions, collaborated with KUMIRADI Infotech for AI implementation services. I was highly impressed with their expertise and innovation. I can confidently say they are one of the best technology companies in the industry."
+    },
+    {
+        name: "Priya Sharma",
+        company: "Digital Innovations Ltd",
+        image: "data:image/png;base64,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",
+        text: "We have been associated with KUMIRADI Infotech for our digital transformation journey. With their cutting-edge solutions and innovative approach, they keep our business ahead of the competition throughout."
+    },
+    {
+        name: "Amit Patel",
+        company: "Future Tech Academy",
+        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
+        text: "Today I have got clarity on what can be done with AI and Machine Learning and How These Technologies Will Help To Grow My Business. This expertise came from the attention and quality training provided by KUMIRADI Infotech."
+    }
+];
+
+let currentTestimonialIndex = 0;
+
+function updateTestimonial(index) {
+    const testimonial = testimonials[index];
+    
+    document.getElementById('testimonialImg').src = testimonial.image;
+    document.getElementById('testimonialImg').alt = testimonial.name;
+    document.getElementById('testimonialText').textContent = `"${testimonial.text}"`;
+    document.getElementById('testimonialName').textContent = testimonial.name;
+    document.getElementById('testimonialCompany').textContent = testimonial.company;
+    
+    // Update dots
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach((dot, i) => {
+        if (i === index) {
+            dot.classList.add('active');
+        } else {
+            dot.classList.remove('active');
+        }
+    });
+}
+
+function nextTestimonial() {
+    currentTestimonialIndex = (currentTestimonialIndex + 1) % testimonials.length;
+    updateTestimonial(currentTestimonialIndex);
+}
+
+function prevTestimonial() {
+    currentTestimonialIndex = (currentTestimonialIndex - 1 + testimonials.length) % testimonials.length;
+    updateTestimonial(currentTestimonialIndex);
+}
+
+function currentTestimonial(index) {
+    currentTestimonialIndex = index;
+    updateTestimonial(currentTestimonialIndex);
+}
+
+// Auto-advance testimonials
+setInterval(nextTestimonial, 5000);
+
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Header scroll effect
+window.addEventListener('scroll', function() {
     const header = document.querySelector('.header');
-    if (window.scrollY > 100) header.classList.add('scrolled');
-    else header.classList.remove('scrolled');
-  });
+    if (window.scrollY > 100) {
+        header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+        header.style.backdropFilter = 'blur(10px)';
+    } else {
+        header.style.backgroundColor = 'white';
+        header.style.backdropFilter = 'none';
+    }
+});
+
+// Animate elements on scroll
+function animateOnScroll() {
+    const elements = document.querySelectorAll('.service-card, .portfolio-item, .blog-post, .feature-item');
+    
+    elements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < window.innerHeight - elementVisible) {
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
+        }
+    });
+}
+
+window.addEventListener('scroll', animateOnScroll);
+
+// Initialize animations
+document.addEventListener('DOMContentLoaded', function() {
+    const elements = document.querySelectorAll('.service-card, .portfolio-item, .blog-post, .feature-item');
+    elements.forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(30px)';
+        element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    });
+    
+    animateOnScroll();
+});
+
+// Form handling for newsletter
+document.querySelector('.newsletter input').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        const email = this.value;
+        if (email) {
+            alert('Thank you for subscribing to our newsletter!');
+            this.value = '';
+        }
+    }
+});
+
+// Button click handlers
+document.addEventListener('DOMContentLoaded', function() {
+    // Newsletter subscription
+    const subscribeBtn = document.querySelector('.newsletter .btn-primary');
+    if (subscribeBtn) {
+        subscribeBtn.addEventListener('click', function() {
+            const emailInput = document.querySelector('.newsletter input');
+            const email = emailInput.value;
+            if (email) {
+                alert('Thank you for subscribing to our newsletter!');
+                emailInput.value = '';
+            } else {
+                alert('Please enter your email address.');
+            }
+        });
+    }
+    
+
+        // WhatsApp widget toggle
+        const whatsappMain = document.getElementById('whatsapp-main');
+        const whatsappOptions = document.getElementById('whatsapp-options');
+        const whatsappWidget = document.getElementById('whatsapp-widget');
+
+        whatsappMain.addEventListener('click', () => {
+            whatsappWidget.classList.toggle('active');
+        });
+
+        // Close WhatsApp options when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!whatsappWidget.contains(e.target)) {
+                whatsappWidget.classList.remove('active');
+            }
+        });
+
+    // CTA buttons
+    const ctaButtons = document.querySelectorAll('.btn-primary, .btn-outline');
+    ctaButtons.forEach(button => {
+        if (button.textContent.includes('Call') || button.textContent.includes('Enquiry')) {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('Thank you for your interest! We will contact you soon.');
+            });
+        }
+    });
+});
+
+// Intersection Observer for animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, observerOptions);
+
+// Observe elements when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    const elementsToAnimate = document.querySelectorAll('.service-card, .portfolio-item, .blog-post, .client-item');
+    elementsToAnimate.forEach(element => {
+        observer.observe(element);
+    });
+});
 </script>
 
+  <!-- ===== SCRIPT ===== -->
+  <script>
+    function openPopup(title, text, image) {
+      document.getElementById("popupTitle").innerText = title;
+      document.getElementById("popupText").innerText = text;
+      document.getElementById("popupImage").src = image;
+      document.getElementById("blogPopup").style.display = "flex";
+    }
+
+    function closePopup() {
+      document.getElementById("blogPopup").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      const popup = document.getElementById("blogPopup");
+      if (event.target === popup) popup.style.display = "none";
+    }
+  </script>
 </body>
 </html>
