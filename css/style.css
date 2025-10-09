@@ -1515,3 +1515,26 @@ blockquote {
       box-shadow:0 6px 20px rgba(59,130,246,0.12);
     }
    */
+    .social-links2  {
+    border: 1px dashed #ffffff26;
+    border-radius: 50%;
+    color: #ffffff;
+    display: inline-block;
+    font-size: 18px;
+    line-height: 40px;
+    position: relative;
+    text-align: center;
+    width: 40px;
+    z-index: 1;
+    transition: all 0.4s ease; /* smooth transition */
+}
+
+.social-links2:hover {
+    color: #fff;
+    border-color: #fff;
+    box-shadow: 0 0 15px #fff;
+    transform: rotate(360deg);
+} 
+
+
+
