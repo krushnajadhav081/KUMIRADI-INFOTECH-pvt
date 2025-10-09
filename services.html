@@ -208,7 +208,7 @@
   </div>
 
   <!-- Footer -->
-   <!-- Footer -->
+    <!-- Footer -->
     <footer id="contact" class="footer">
         <div class="container">
             <div class="footer-content">
@@ -230,14 +230,15 @@
                             <span>Technology Hub, Innovation District<br>Mumbai, Maharashtra, India</span>
                         </div>
                     </div>
-                    
-                      <div class="social-links">
+                   
+                    <div class="social-links">
                         <a href="https://www.facebook.com/profile.php?id=100089866823820&mibextid=ZbWKwL"><i   class="social-links2 fab fa-facebook-f"></i></a>
                         <a href="https://twitter.com/KumiradiInfo"><i  class="social-links2 fab fa-twitter"></i></a>
                         <a href="https://www.linkedin.com/in/kumiradi-infotech-b59594386?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i  class="social-links2 fab fa-linkedin-in"></i></a>
                         <a href="https://www.instagram.com/kumiradi.infotech?igsh=dTg2bmdncnY1enEx"><i  class="social-links2 fab fa-instagram"></i></a>
                         <!-- <a href=""><i class="social-links2 fab fa-"></i></a> -->
                     </div>
+                </div>
                 
                 <div class="footer-section">
                     <h4>Our Services</h4>
@@ -292,26 +293,182 @@
         </div>
     </footer>
 
+</body>
+</html>
 
-  <!-- JS -->
-  <script>
-    // ===== MOBILE MENU =====
-    function toggleMobileMenu() {
-      const mobileNav = document.getElementById('mobileNav');
-      const menuIcon = document.getElementById('menu-icon');
-      const isOpen = mobileNav.classList.toggle('show');
-      mobileNav.style.display = isOpen ? 'flex' : 'none';
-      menuIcon.className = isOpen ? 'fas fa-times' : 'fas fa-bars';
+<script>
+    // Mobile Menu Toggle
+function toggleMobileMenu() {
+    const mobileNav = document.getElementById('mobileNav');
+    const menuIcon = document.getElementById('menu-icon');
+    
+    if (mobileNav.classList.contains('show')) {
+        mobileNav.classList.remove('show');
+        mobileNav.style.display = 'none';
+        menuIcon.className = 'fas fa-bars';
+    } else {
+        mobileNav.classList.add('show');
+        mobileNav.style.display = 'flex';
+        menuIcon.className = 'fas fa-times';
     }
-    function closeMobileMenu() {
-      const mobileNav = document.getElementById('mobileNav');
-      mobileNav.classList.remove('show');
-      mobileNav.style.display = 'none';
-      document.getElementById('menu-icon').className = 'fas fa-bars';
+}
+
+function closeMobileMenu() {
+    const mobileNav = document.getElementById('mobileNav');
+    const menuIcon = document.getElementById('menu-icon');
+    
+    mobileNav.classList.remove('show');
+    mobileNav.style.display = 'none';
+    menuIcon.className = 'fas fa-bars';
+}
+
+// Testimonial Slider
+const testimonials = [
+    {
+        name: "Rajesh Kumar",
+        company: "TechVision Solutions",
+        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
+        text: "My company, TechVision Solutions, collaborated with KUMIRADI Infotech for AI implementation services. I was highly impressed with their expertise and innovation. I can confidently say they are one of the best technology companies in the industry."
+    },
+    {
+        name: "Priya Sharma",
+        company: "Digital Innovations Ltd",
+        image: "data:image/png;base64,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",
+        text: "We have been associated with KUMIRADI Infotech for our digital transformation journey. With their cutting-edge solutions and innovative approach, they keep our business ahead of the competition throughout."
+    },
+    {
+        name: "Amit Patel",
+        company: "Future Tech Academy",
+        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
+        text: "Today I have got clarity on what can be done with AI and Machine Learning and How These Technologies Will Help To Grow My Business. This expertise came from the attention and quality training provided by KUMIRADI Infotech."
     }
+];
 
+let currentTestimonialIndex = 0;
 
-// WhatsApp widget toggle
+function updateTestimonial(index) {
+    const testimonial = testimonials[index];
+    
+    document.getElementById('testimonialImg').src = testimonial.image;
+    document.getElementById('testimonialImg').alt = testimonial.name;
+    document.getElementById('testimonialText').textContent = `"${testimonial.text}"`;
+    document.getElementById('testimonialName').textContent = testimonial.name;
+    document.getElementById('testimonialCompany').textContent = testimonial.company;
+    
+    // Update dots
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach((dot, i) => {
+        if (i === index) {
+            dot.classList.add('active');
+        } else {
+            dot.classList.remove('active');
+        }
+    });
+}
+
+function nextTestimonial() {
+    currentTestimonialIndex = (currentTestimonialIndex + 1) % testimonials.length;
+    updateTestimonial(currentTestimonialIndex);
+}
+
+function prevTestimonial() {
+    currentTestimonialIndex = (currentTestimonialIndex - 1 + testimonials.length) % testimonials.length;
+    updateTestimonial(currentTestimonialIndex);
+}
+
+function currentTestimonial(index) {
+    currentTestimonialIndex = index;
+    updateTestimonial(currentTestimonialIndex);
+}
+
+// Auto-advance testimonials
+setInterval(nextTestimonial, 5000);
+
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Header scroll effect
+window.addEventListener('scroll', function() {
+    const header = document.querySelector('.header');
+    if (window.scrollY > 100) {
+        header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+        header.style.backdropFilter = 'blur(10px)';
+    } else {
+        header.style.backgroundColor = 'white';
+        header.style.backdropFilter = 'none';
+    }
+});
+
+// Animate elements on scroll
+function animateOnScroll() {
+    const elements = document.querySelectorAll('.service-card, .portfolio-item, .blog-post, .feature-item');
+    
+    elements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < window.innerHeight - elementVisible) {
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
+        }
+    });
+}
+
+window.addEventListener('scroll', animateOnScroll);
+
+// Initialize animations
+document.addEventListener('DOMContentLoaded', function() {
+    const elements = document.querySelectorAll('.service-card, .portfolio-item, .blog-post, .feature-item');
+    elements.forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(30px)';
+        element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    });
+    
+    animateOnScroll();
+});
+
+// Form handling for newsletter
+document.querySelector('.newsletter input').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        const email = this.value;
+        if (email) {
+            alert('Thank you for subscribing to our newsletter!');
+            this.value = '';
+        }
+    }
+});
+
+// Button click handlers
+document.addEventListener('DOMContentLoaded', function() {
+    // Newsletter subscription
+    const subscribeBtn = document.querySelector('.newsletter .btn-primary');
+    if (subscribeBtn) {
+        subscribeBtn.addEventListener('click', function() {
+            const emailInput = document.querySelector('.newsletter input');
+            const email = emailInput.value;
+            if (email) {
+                alert('Thank you for subscribing to our newsletter!');
+                emailInput.value = '';
+            } else {
+                alert('Please enter your email address.');
+            }
+        });
+    }
+    
+
+        // WhatsApp widget toggle
         const whatsappMain = document.getElementById('whatsapp-main');
         const whatsappOptions = document.getElementById('whatsapp-options');
         const whatsappWidget = document.getElementById('whatsapp-widget');
@@ -327,27 +484,38 @@
             }
         });
 
-
-    // ===== MODAL =====
-    const learnButtons = document.querySelectorAll('.learn-more');
-    const modal = document.getElementById('serviceModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalDesc = document.getElementById('modalDesc');
-    const modalImg = document.getElementById('modalImg');
-    const closeBtn = document.querySelector('.close-btn');
-
-    learnButtons.forEach(btn => {
-      btn.addEventListener('click', e => {
-        const card = e.target.closest('.service-card');
-        modalTitle.textContent = card.dataset.title;
-        modalDesc.textContent = card.dataset.desc;
-        modalImg.src = card.dataset.img;
-        modal.style.display = 'flex';
-      });
+    // CTA buttons
+    const ctaButtons = document.querySelectorAll('.btn-primary, .btn-outline');
+    ctaButtons.forEach(button => {
+        if (button.textContent.includes('Call') || button.textContent.includes('Enquiry')) {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('Thank you for your interest! We will contact you soon.');
+            });
+        }
     });
+});
 
-    closeBtn.onclick = () => (modal.style.display = 'none');
-    window.onclick = e => { if (e.target === modal) modal.style.display = 'none'; };
-  </script>
-</body>
-</html>
+// Intersection Observer for animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, observerOptions);
+
+// Observe elements when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    const elementsToAnimate = document.querySelectorAll('.service-card, .portfolio-item, .blog-post, .client-item');
+    elementsToAnimate.forEach(element => {
+        observer.observe(element);
+    });
+});
+</script>
