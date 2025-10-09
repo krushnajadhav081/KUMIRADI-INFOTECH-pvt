@@ -1374,3 +1374,15 @@ blockquote {
         font-size: 1.5rem;
     }
 }
+ 
+    /* html,body{height:100%;margin:0;cursor:none;background:#081229;overflow:hidden;}
+    .trail-dot {
+      position:fixed;
+      width:14px;height:14px;border-radius:50%;
+      background:rgba(99,102,241,0.95);
+      pointer-events:none;
+      transform:translate(-50%,-50%);
+      will-change:transform, opacity;
+      box-shadow:0 6px 20px rgba(59,130,246,0.12);
+    }
+   */
