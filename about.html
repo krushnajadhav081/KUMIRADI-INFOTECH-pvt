@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KUMIRADI Infotech - Premier Technology Company</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <h1>KUMIRADI <span>Infotech</span></h1>
+                </div>
+                
+                <nav class="nav-desktop">
+                    <a href="#home">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="services.html">Services</a>
+                    <a href="portfolio.html">Portfolio</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+                
+                <div class="nav-cta">
+                    <button class="btn-primary">
+                        <i class="fas fa-phone"></i>
+                        Call: +91-9798990420
+                    </button>
+                </div>
+                
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars" id="menu-icon"></i>
+                </button>
+            </div>
+            
+            <nav class="nav-mobile" id="mobileNav">
+                <a href="#home" onclick="closeMobileMenu()">Home</a>
+                <a href="#about" onclick="closeMobileMenu()">About</a>
+                <a href="#services" onclick="closeMobileMenu()">Services</a>
+                <a href="#portfolio" onclick="closeMobileMenu()">Portfolio</a>
+                <a href="#blog" onclick="closeMobileMenu()">Blog</a>
+                <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+                <button class="btn-primary mobile-cta">
+                    <i class="fas fa-phone"></i>
+                    Call: +91-9798990420
+                </button>
+            </nav>
+        </div>
+    </header>
+
+
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="section-subtitle">About Us</p>
+                    <h2 class="section-title">
+                        Welcome to KUMIRADI Infotech, A Technology Company That Collaborates With Brands To Transform Businesses From The Inside-Out.
+                    </h2>
+                    <p class="about-description">
+                        As Digital Partners, We Help Clients Speed-Up Digital Transformation And 
+                        Enhance Technology Returns. We'll be happy to listen your Technology Requirements 
+                        and unleash absolute digital potential.
+                    </p>
+                    
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>AI Innovation</h4>
+                                <p>Cutting-edge artificial intelligence solutions</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Software Development</h4>
+                                <p>Custom software and application development</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Cybersecurity</h4>
+                                <p>Advanced security and data protection</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Digital Transformation</h4>
+                                <p>Complete digital business transformation</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-primary">
+                        Explore Our Services
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+                
+                <div class="about-image">
+                    <div class="image-container">
+                        <img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzd8MHwxfHNlYXJjaHwzfHx0ZWNobm9sb2d5fGVufDB8fHx8MTc1OTkzNTkyMXww&ixlib=rb-4.1.0&q=85" alt="Technology Company">
+                        <div class="decorative-blur blur-3"></div>
+                        <div class="decorative-blur blur-4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- WhatsApp Floating Widget -->
+     <img src="" alt="">
+    <div class="whatsapp-widget" id="whatsapp-widget">
+        <div class="whatsapp-main" id="whatsapp-main">
+            <i class="fab fa-whatsapp"></i>
+        </div>
+        <div class="whatsapp-options" id="whatsapp-options">
+            <a href="tel:+917020459931" class="whatsapp-option call">
+                <i class="fas fa-phone"></i>
+                <span>Call</span>
+            </a>
+            <a href="https://wa.me/917020459931" target="_blank" class="whatsapp-option whatsapp">
+                <i class="fab fa-whatsapp"></i>
+                <span>WhatsApp</span>
+            </a>
+            <a href="sms:+919876543210" class="whatsapp-option sms">
+                <i class="fas fa-sms"></i>
+                <span>SMS</span>
+            </a>
+        </div>
+    </div>
