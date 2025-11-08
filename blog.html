@@ -100,18 +100,22 @@
     }
 
     .btn-outline {
-      background: transparent;
-      border: 2px solid #ffffff;
+      display: inline-block !important;
+      background: transparent !important;
+      border: 2px solid #ffffff !important;
       color: #ffffff !important;
-      padding: 10px 20px;
-      border-radius: 25px;
-      cursor: pointer;
-      font-size: 15px;
-      transition: all 0.3s ease;
-      margin-top: auto;
+      padding: 10px 20px !important;
+      border-radius: 25px !important;
+      cursor: pointer !important;
+      font-size: 15px !important;
+      transition: all 0.3s ease !important;
+      margin-top: auto !important;
+      text-decoration: none !important;
+      visibility: visible !important;
+      opacity: 1 !important;
     }
     .btn-outline:hover {
-      background: #ffffff;
+      background: #ffffff !important;
       color: #000000 !important;
     }
 
@@ -190,6 +194,173 @@
       padding: 20px 0;
       margin-top: 60px;
     }
+
+    /* ----------- BLOG MODAL ----------- */
+    .info-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .info-modal.active {
+      display: flex;
+    }
+
+    .modal-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(5px);
+    }
+
+    .modal-container {
+      position: relative;
+      width: 90%;
+      max-width: 900px;
+      max-height: 90vh;
+      background: #000000;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 25px 50px rgba(255, 255, 255, 0.3);
+      z-index: 10001;
+      animation: modalSlideIn 0.4s ease-out;
+      border: 2px solid #ffffff;
+    }
+
+    @keyframes modalSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      cursor: pointer;
+      z-index: 10002;
+      transition: all 0.3s ease;
+      font-size: 1.2rem;
+    }
+
+    .modal-close:hover {
+      background: #ffffff;
+      color: #000000;
+      transform: rotate(90deg);
+    }
+
+    .modal-content-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-image {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .modal-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .modal-text {
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      background: #000000;
+    }
+
+    .modal-text h2 {
+      font-size: 1.75rem;
+      color: #ffffff !important;
+      line-height: 1.2;
+      margin: 0;
+    }
+
+    .modal-text p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #ffffff !important;
+      margin: 0;
+    }
+
+    .modal-features {
+      margin-top: 1rem;
+    }
+
+    .modal-features h3 {
+      color: #ffffff !important;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .modal-features ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .modal-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: #ffffff !important;
+      font-size: 0.95rem;
+    }
+
+    .modal-features li i {
+      color: #ffffff;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .modal-content-wrapper {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-image {
+        height: 250px;
+      }
+
+      .modal-text {
+        padding: 1.5rem;
+      }
+
+      .modal-text h2 {
+        font-size: 1.5rem;
+      }
+    }
   </style>
    <header class="header">
         <div class="container">
@@ -237,26 +408,26 @@
 
 <body>
 
-  <!-- ===== SERVICES SECTION ===== -->
-  <section id="services" class="services-section">
+  <!-- ===== BLOG SECTION ===== -->
+  <section id="blog" class="services-section">
     <div class="container">
       <div class="section-header">
-        <p class="section-subtitle">What We Offer</p>
-        <h2 class="section-title">Our Expertise and Services</h2>
+        <p class="section-subtitle">Latest Insights</p>
+        <h2 class="section-title">Our Blog & Articles</h2>
       </div>
 
       <div class="services-grid">
         <!-- CARD 1 -->
         <div class="service-card">
           <div class="service-image">
-            <img src="https://images.unsplash.com/photo-1579403124614-197f69d8187b?auto=format&q=80" alt="Software Development">
+            <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80" alt="Cybersecurity">
           </div>
           <div class="service-content">
-            <div class="service-icon"><i class="fas fa-code"></i></div>
-            <h3>Software Development</h3>
-            <p>Custom software solutions that drive efficiency and growth.</p>
-            <button class="btn-outline" onclick="openPopup('Software Development', 'We build scalable and high-performance software tailored to your business needs, ensuring robust architecture, seamless functionality, and future-ready solutions. Our team focuses on delivering secure, efficient, and customizable software systems that streamline operations, enhance productivity, and drive digital growth. Whether you need enterprise-grade applications, automation tools, or cloud-based platforms, we ensure your software evolves with your business.', 'https://images.unsplash.com/photo-1579403124614-197f69d8187b?auto=format&q=80')">
-              Learn More <i class="fas fa-arrow-right"></i>
+            <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+            <h3>Building Robust Cybersecurity Infrastructure</h3>
+            <p>In today's digital landscape, cybersecurity is no longer optional—it's essential for modern enterprises...</p>
+            <button class="btn-outline" onclick='openBlogModal("Building Robust Cybersecurity Infrastructure", "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80", "In today&apos;s digital landscape, cybersecurity is no longer optional—it&apos;s essential. Modern enterprises face increasingly sophisticated threats that require comprehensive, multi-layered security strategies. Our approach combines cutting-edge technology with proven methodologies to protect your digital assets, ensure compliance, and maintain business continuity. From threat detection to incident response, we provide end-to-end cybersecurity solutions tailored to your organization&apos;s unique needs.", ["Advanced Threat Detection", "Zero Trust Architecture", "Security Operations Center (SOC)", "Compliance Management", "Incident Response Planning", "Employee Security Training"])'>
+              Read More <i class="fas fa-arrow-right"></i>
             </button>
           </div>
         </div>
@@ -264,14 +435,14 @@
         <!-- CARD 2 -->
         <div class="service-card">
           <div class="service-image">
-            <img src="https://images.unsplash.com/photo-1610563166150-b34df4f3bcd6?auto=format&q=80" alt="Web Development">
+            <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=800&q=80" alt="Cloud Technology">
           </div>
           <div class="service-content">
-            <div class="service-icon"><i class="fas fa-globe"></i></div>
-            <h3>Web Development</h3>
-            <p>Responsive, fast, and SEO-optimized websites for your brand.</p>
-            <button class="btn-outline" onclick="openPopup('Web Development', 'We create stunning, responsive websites optimized for user engagement and SEO success. Our designs combine visual appeal with seamless functionality to deliver an exceptional user experience across all devices. Every website we build is crafted with modern web standards, fast loading times, and strategic SEO practices to help your brand rank higher and attract more visitors. From business portfolios to e-commerce platforms, we turn your digital vision into a powerful online presence.', 'https://images.unsplash.com/photo-1610563166150-b34df4f3bcd6?auto=format&q=80')">
-              Learn More <i class="fas fa-arrow-right"></i>
+            <div class="service-icon"><i class="fas fa-cloud"></i></div>
+            <h3>Cloud Migration Strategies for Digital Transformation</h3>
+            <p>Successful cloud migration requires strategic planning, careful execution, and ongoing optimization...</p>
+            <button class="btn-outline" onclick='openBlogModal("Cloud Migration Strategies", "https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=800&q=80", "Successful cloud migration requires more than just moving data—it demands strategic planning, careful execution, and ongoing optimization. Whether you&apos;re considering Google Cloud, AWS, or Azure, our proven migration strategies ensure minimal disruption while maximizing the benefits of cloud computing. We guide you through every step, from initial assessment to post-migration optimization, ensuring your cloud infrastructure delivers real business value.", ["Cloud Readiness Assessment", "Migration Planning & Strategy", "Multi-Cloud Architecture", "Cost Optimization", "Performance Monitoring", "Disaster Recovery Setup"])'>
+              Read More <i class="fas fa-arrow-right"></i>
             </button>
           </div>
         </div>
@@ -279,14 +450,14 @@
         <!-- CARD 3 -->
         <div class="service-card">
           <div class="service-image">
-            <img src="https://images.unsplash.com/photo-1697577418970-95d99b5a55cf?auto=format&q=80" alt="AI & ML Training">
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80" alt="Machine Learning">
           </div>
           <div class="service-content">
             <div class="service-icon"><i class="fas fa-brain"></i></div>
-            <h3>AI & ML Training</h3>
-            <p>Upskill with real-world AI and machine learning programs.</p>
-            <button class="btn-outline" onclick="openPopup('AI & ML Training', 'Comprehensive AI and Machine Learning training designed for students and professionals to build future-ready skills. Our programs cover core concepts, hands-on projects, and real-world applications to ensure practical learning and industry relevance. With expert mentorship and up-to-date tools, we help learners master data analysis, model development, and deployment — preparing them for the evolving demands of the AI-driven world. Our programs cover core concepts, hands-on projects, and real-world applications to ensure practical learning and industry relevance. With expert mentorship and up-to-date tools, we help learners master data analysis, model development, and deployment — preparing them for the evolving demands of the AI-driven world.', 'https://images.unsplash.com/photo-1697577418970-95d99b5a55cf?auto=format&q=80')">
-              Learn More <i class="fas fa-arrow-right"></i>
+            <h3>Machine Learning Training Programs</h3>
+            <p>The future belongs to those who understand AI and Machine Learning. Upskill for tomorrow's challenges...</p>
+            <button class="btn-outline" onclick='openBlogModal("Machine Learning Training Programs", "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80", "The future belongs to those who understand AI and Machine Learning. Our comprehensive training programs combine theoretical knowledge with hands-on practical experience, preparing professionals and students for the rapidly evolving tech landscape. Led by industry experts, our courses cover everything from fundamentals to advanced applications, ensuring you gain the skills needed to excel in tomorrow&apos;s AI-driven world.", ["Hands-on Project Experience", "Industry Expert Instructors", "Real-World Case Studies", "Career Guidance & Placement", "Certification Programs", "Continuous Learning Support"])'>
+              Read More <i class="fas fa-arrow-right"></i>
             </button>
           </div>
         </div>
@@ -294,12 +465,12 @@
         <!-- CARD 4 -->
         <div class="service-card">
           <div class="service-image">
-            <img src="https://images.unsplash.com/photo-1674027444485-cec3da58eef4?auto=format&q=80" alt="Cybersecurity">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80" alt="Digital Innovation">
           </div>
           <div class="service-content">
-            <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
-            <h3>Cybersecurity</h3>
-            <p>Protect your business from modern cyber threats effectively.</p>
+            <div class="service-icon"><i class="fas fa-rocket"></i></div>
+            <h3>The Future of Digital Innovation in Business</h3>
+            <p>Explore how emerging technologies are reshaping business operations and creating new opportunities...</p>
             <button class="btn-outline" onclick="openPopup('Cybersecurity', 'Advanced cybersecurity strategies to protect your systems, networks, and data from evolving digital threats. Our security solutions include risk assessment, threat detection, and incident response to ensure complete protection and compliance. We implement multi-layered defense mechanisms, encryption protocols, and continuous monitoring to safeguard your organization’s digital assets and maintain business continuity.', 'https://images.unsplash.com/photo-1674027444485-cec3da58eef4?auto=format&q=80')">
               Learn More <i class="fas fa-arrow-right"></i>
             </button>
@@ -309,14 +480,14 @@
         <!-- CARD 5 -->
         <div class="service-card">
           <div class="service-image">
-            <img src="https://images.unsplash.com/photo-1648737966636-2fc3a5fffc8a?auto=format&q=80" alt="IT Infrastructure">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Data Analytics">
           </div>
           <div class="service-content">
-            <div class="service-icon"><i class="fas fa-database"></i></div>
-            <h3>IT Infrastructure</h3>
-            <p>Build reliable IT systems that power your enterprise smoothly.</p>
-            <button class="btn-outline" onclick="openPopup('IT Infrastructure', 'Expert IT infrastructure services that ensure reliability, scalability, and performance for your organization. We design and manage robust IT environments — from cloud and network architecture to data storage and server optimization — enabling seamless business operations. Our solutions focus on minimizing downtime, enhancing efficiency, and future-proofing your infrastructure to support long-term growth and digital transformation. We design and manage robust IT environments — from cloud and network architecture to data storage and server optimization — enabling seamless business operations. Our solutions focus on minimizing downtime, enhancing efficiency, and future-proofing your infrastructure to support long-term growth and digital transformation.', 'https://images.unsplash.com/photo-1648737966636-2fc3a5fffc8a?auto=format&q=80')">
-              Learn More <i class="fas fa-arrow-right"></i>
+            <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+            <h3>Leveraging Data Analytics for Business Growth</h3>
+            <p>Transform raw data into actionable insights that drive strategic decision-making and business success...</p>
+            <button class="btn-outline" onclick='openBlogModal("Data Analytics for Business Growth", "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80", "In the age of big data, organizations that effectively leverage analytics gain a significant competitive advantage. Data analytics transforms raw information into actionable insights, enabling better decision-making, improved customer experiences, and optimized operations. Our analytics solutions help you unlock the full potential of your data, from collection and processing to visualization and predictive modeling.", ["Business Intelligence Dashboards", "Predictive Analytics", "Customer Behavior Analysis", "Real-time Data Processing", "Data Visualization", "Performance Metrics & KPIs"])'>
+              Read More <i class="fas fa-arrow-right"></i>
             </button>
           </div>
         </div>
@@ -324,14 +495,14 @@
         <!-- CARD 6 -->
         <div class="service-card">
           <div class="service-image">
-            <img src="https://images.unsplash.com/photo-1694903110330-cc64b7e1d21d?auto=format&q=80" alt="Digital Transformation">
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80" alt="Remote Work">
           </div>
           <div class="service-content">
-            <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
-            <h3>Digital Transformation</h3>
-            <p>Transform your business with next-gen digital solutions.</p>
-            <button class="btn-outline" onclick="openPopup('Digital Transformation', 'We help organizations adopt cutting-edge digital technologies to modernize processes and boost productivity. Our digital transformation solutions integrate automation, cloud computing, AI, and data analytics to streamline workflows and enhance decision-making. By aligning technology with business goals, we empower companies to innovate faster, improve efficiency, and stay competitive in the digital era.', 'https://images.unsplash.com/photo-1694903110330-cc64b7e1d21d?auto=format&q=80')">
-              Learn More <i class="fas fa-arrow-right"></i>
+            <div class="service-icon"><i class="fas fa-laptop-house"></i></div>
+            <h3>Building Effective Remote Work Infrastructure</h3>
+            <p>Create a seamless remote work environment with the right tools, security, and collaboration platforms...</p>
+            <button class="btn-outline" onclick='openBlogModal("Remote Work Infrastructure", "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80", "The shift to remote and hybrid work models has fundamentally changed how organizations operate. Building an effective remote work infrastructure requires more than just video conferencing tools—it demands a comprehensive approach to collaboration, security, and productivity. We help organizations create robust remote work environments that empower teams to work efficiently from anywhere while maintaining security and fostering collaboration.", ["Cloud Collaboration Tools", "Secure VPN & Access", "Virtual Meeting Solutions", "Project Management Systems", "Remote Team Productivity", "Cybersecurity for Remote Work"])'>
+              Read More <i class="fas fa-arrow-right"></i>
             </button>
           </div>
         </div>
@@ -369,6 +540,30 @@
       <div class="popup-body">
         <h3 id="popupTitle"></h3>
         <p id="popupText"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Blog Modal Popup -->
+  <div id="blogModal" class="info-modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-container">
+      <button class="modal-close" onclick="closeBlogModal()">
+        <i class="fas fa-times"></i>
+      </button>
+      <div class="modal-content-wrapper">
+        <div class="modal-image">
+          <img id="blogModalImage" src="" alt="">
+        </div>
+        <div class="modal-text">
+          <h2 id="blogModalTitle"></h2>
+          <p id="blogModalDescription"></p>
+          <div class="modal-features" id="blogModalFeatures"></div>
+          <button class="btn-primary" onclick="closeBlogModal()">
+            Got It
+            <i class="fas fa-check"></i>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -721,6 +916,60 @@ document.addEventListener('DOMContentLoaded', function() {
       const popup = document.getElementById("blogPopup");
       if (event.target === popup) popup.style.display = "none";
     }
+
+    // Blog Modal Functions
+    function openBlogModal(title, image, description, features) {
+      const modal = document.getElementById('blogModal');
+      const modalTitle = document.getElementById('blogModalTitle');
+      const modalImage = document.getElementById('blogModalImage');
+      const modalDescription = document.getElementById('blogModalDescription');
+      const modalFeatures = document.getElementById('blogModalFeatures');
+      
+      // Set content
+      modalTitle.textContent = title;
+      modalImage.src = image;
+      modalImage.alt = title;
+      modalDescription.textContent = description;
+      
+      // Create features list
+      if (features && features.length > 0) {
+        const featuresList = document.createElement('ul');
+        features.forEach(feature => {
+          const li = document.createElement('li');
+          li.innerHTML = `<i class="fas fa-check-circle"></i> ${feature}`;
+          featuresList.appendChild(li);
+        });
+        modalFeatures.innerHTML = '<h3 style="color: #ffffff; margin-bottom: 1rem;">Key Highlights:</h3>';
+        modalFeatures.appendChild(featuresList);
+      }
+      
+      // Show modal
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeBlogModal() {
+      const modal = document.getElementById('blogModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close modal when clicking overlay
+    document.addEventListener('DOMContentLoaded', function() {
+      const modal = document.getElementById('blogModal');
+      if (modal) {
+        const overlay = modal.querySelector('.modal-overlay');
+        
+        overlay.addEventListener('click', closeBlogModal);
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') {
+            closeBlogModal();
+          }
+        });
+      }
+    });
   </script>
 </body>
 </html>
