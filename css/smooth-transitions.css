@@ -49,11 +49,13 @@ img {
 
 /* Hero content animations */
 .hero-text {
-    animation: slideInLeft 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation: slideInLeft 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    opacity: 1 !important;
 }
 
 .hero-image {
-    animation: slideInRight 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation: slideInRight 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    opacity: 1 !important;
 }
 
 @keyframes slideInLeft {
@@ -349,7 +351,8 @@ select:focus {
 
 /* ===== SECTION ANIMATIONS ===== */
 section {
-    animation: fadeIn 0.8s ease-out;
+    animation: fadeIn 0.8s ease-out forwards;
+    opacity: 1 !important;
 }
 
 @keyframes fadeIn {
@@ -374,7 +377,8 @@ section {
 
 /* ===== SMOOTH PAGE LOAD ===== */
 body {
-    animation: pageLoad 0.5s ease-out;
+    animation: pageLoad 0.5s ease-out forwards;
+    opacity: 1 !important;
 }
 
 @keyframes pageLoad {
@@ -388,7 +392,8 @@ body {
 
 /* ===== HEADER ANIMATION ===== */
 .header {
-    animation: slideDown 0.6s ease-out;
+    animation: slideDown 0.6s ease-out forwards;
+    opacity: 1 !important;
 }
 
 @keyframes slideDown {
