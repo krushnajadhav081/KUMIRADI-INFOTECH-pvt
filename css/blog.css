@@ -11,7 +11,8 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     line-height: 1.6;
-    color: #ce1717;
+    color: #ffffff !important;
+    background: #000000 !important;
 }
 /* Change title color on hover */
 .promo:hover .title {
@@ -41,7 +42,7 @@ html {
 /* services*/
 body {
   font-family: "Poppins", sans-serif;
-  background: #f8f9fa;
+  background: #000000 !important;
   margin: 0;
   padding: 0;
 }
@@ -58,9 +59,10 @@ body {
 .section-title {
   font-size: 2rem;
   margin: 10px 0;
+  color: #ffffff !important;
 }
 .section-subtitle {
-  color: #007bff;
+  color: #ffffff !important;
   font-weight: 600;
 }
 
@@ -71,14 +73,16 @@ body {
   gap: 25px;
 }
 .service-card {
-  background: #fff;
+  background: #000000 !important;
   border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 5px 15px rgba(255,255,255,0.2);
   overflow: hidden;
   transition: transform 0.3s;
+  border: 1px solid #ffffff;
 }
 .service-card:hover {
   transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(255,255,255,0.3);
 }
 .service-image img {
   width: 100%;
@@ -89,23 +93,29 @@ body {
   padding: 20px;
   text-align: center;
 }
+.service-content h3 {
+  color: #ffffff !important;
+}
+.service-content p {
+  color: #ffffff !important;
+}
 .service-icon {
   font-size: 2rem;
-  color: #007bff;
+  color: #ffffff !important;
   margin-bottom: 10px;
 }
 .btn-outline {
   background: none;
-  border: 2px solid #007bff;
-  color: #007bff;
+  border: 2px solid #ffffff;
+  color: #ffffff !important;
   padding: 8px 16px;
   border-radius: 30px;
   cursor: pointer;
   transition: 0.3s;
 }
 .btn-outline:hover {
-  background: #007bff;
-  color: #fff;
+  background: #ffffff;
+  color: #000000 !important;
 }
 
 /* ===== Modal Popup (Smaller & Centered) ===== */
@@ -125,15 +135,16 @@ body {
   to {opacity: 1;}
 }
 .modal-content {
-  background: #fff;
+  background: #000000;
   border-radius: 12px;
   width: 90%;
   max-width: 400px;   /* smaller width */
   padding: 20px;
   text-align: center;
   position: relative;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 25px rgba(255,255,255,0.3);
   animation: zoomIn 0.3s;
+  border: 1px solid #ffffff;
 }
 @keyframes zoomIn {
   from {transform: scale(0.8);}
@@ -149,10 +160,11 @@ body {
 .modal h3 {
   margin-top: 5px;
   font-size: 1.4rem;
+  color: #ffffff !important;
 }
 .modal p {
   font-size: 0.95rem;
-  color: #ffffff;
+  color: #ffffff !important;
 }
 .close-btn {
   position: absolute;
@@ -160,11 +172,11 @@ body {
   left: 380px;
   font-size: 1.4rem;
   cursor: pointer;
-  color: #333;
+  color: #ffffff;
   transition: 0.2s;
 }
 .close-btn:hover {
-  color: #007bff;
+  color: #cccccc;
 }
 
 .container {
@@ -299,9 +311,10 @@ flex-direction: row-reverse;
     top: 0;
     left: 0;
     right: 0;
-    background: white;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    background: #000000 !important;
+    box-shadow: 0 2px 20px rgba(255, 255, 255, 0.2);
     z-index: 1000;
+    border-bottom: 1px solid #ffffff;
 
     /* ANIMATION: Header Fade Down on Load */
     opacity: 0;
@@ -318,11 +331,11 @@ flex-direction: row-reverse;
 .logo h1 {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #3b82f6;
+    color: #ffffff !important;
 }
 
 .logo h1 span {
-    color: #1f2937;
+    color: #ffffff !important;
 }
 
 .nav-desktop {
@@ -332,13 +345,13 @@ flex-direction: row-reverse;
 
 .nav-desktop a {
     text-decoration: none;
-    color: #374151;
+    color: #ffffff !important;
     font-weight: 500;
     transition: color 0.3s ease;
 }
 
 .nav-desktop a:hover {
-    color: #3b82f6;
+    color: #cccccc !important;
 }
 
 .mobile-menu-btn {
@@ -347,7 +360,7 @@ flex-direction: row-reverse;
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
-    color: #374151;
+    color: #ffffff !important;
 }
 
 .nav-mobile {
@@ -368,9 +381,9 @@ flex-direction: row-reverse;
 
 .nav-mobile a {
     text-decoration: none;
-    color: #374151;
+    color: #ffffff !important;
     padding: 0.5rem 0;
-    border-bottom: 1px solid #f3f4f6;
+    border-bottom: 1px solid #ffffff;
 }
 
 .nav-mobile a:last-child {
@@ -396,12 +409,12 @@ flex-direction: row-reverse;
 }
 
 .btn-primary {
-    background: #3b82f6;
-    color: white;
+    background: #ffffff;
+    color: #000000 !important;
 }
 
 .btn-primary:hover {
-    background: #2563eb;
+    background: #cccccc;
     transform: translateY(-1px);
 }
 
@@ -1146,9 +1159,10 @@ blockquote {
 
 /* Footer */
 .footer {
-    background: #1f2937;
+    background: #000000 !important;
     color: white;
     padding: 4rem 0 0;
+    border-top: 1px solid #ffffff;
 }
 
 .footer-content {
@@ -1164,7 +1178,7 @@ blockquote {
 }
 
 .footer-section h3 span {
-    color: #60a5fa;
+    color: #ffffff !important;
 }
 
 .footer-section h4 {
@@ -1203,18 +1217,18 @@ blockquote {
 .social-links a {
     width: 2.5rem;
     height: 2.5rem;
-    background: #3b82f6;
+    background: #ffffff;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: #000000 !important;
     text-decoration: none;
     transition: background 0.3s ease;
 }
 
 .social-links a:hover {
-    background: #2563eb;
+    background: #cccccc;
 }
 
 .footer-section ul {
@@ -1235,7 +1249,7 @@ blockquote {
 }
 
 .footer-section ul li a:hover {
-    color: #60a5fa;
+    color: #ffffff !important;
 }
 
 .footer-section ul li a i {
@@ -1255,8 +1269,8 @@ blockquote {
 }
 
 .newsletter input {
-    background: #374151;
-    border: 1px solid #4b5563;
+    background: #000000;
+    border: 1px solid #ffffff;
     border-radius: 0.5rem;
     padding: 0.75rem 1rem;
     color: white;
@@ -1265,7 +1279,7 @@ blockquote {
 }
 
 .newsletter input:focus {
-    border-color: #60a5fa;
+    border-color: #ffffff;
 }
 
 .newsletter input::placeholder {
@@ -1284,7 +1298,7 @@ blockquote {
 }
 
 .footer-bottom {
-    border-top: 1px solid #374151;
+    border-top: 1px solid #ffffff;
     padding: 1.5rem 0;
 }
 
@@ -1315,7 +1329,7 @@ blockquote {
 }
 
 .footer-links a:hover {
-    color: #60a5fa;
+    color: #ffffff !important;
 }
 
 /* =================================================================
