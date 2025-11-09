@@ -378,7 +378,7 @@ function prevTestimonial() {
     updateTestimonial(currentTestimonialIndex);
 }
 
-function currentTestimonial(index) {
+function goToTestimonial(index) {
     currentTestimonialIndex = index;
     updateTestimonial(currentTestimonialIndex);
 }
