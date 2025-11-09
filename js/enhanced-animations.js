@@ -5,7 +5,7 @@
 
 // ===== DOCUMENT READY =====
 document.addEventListener('DOMContentLoaded', function() {
-    initializeParticleSystem();
+    // initializeParticleSystem(); // Disabled - white dots removed
     initializeTypingEffect();
     initialize3DTilt();
     initializeMagneticCursor();
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeAdvancedScrollAnimations();
     initializeWaveAnimation();
     initializeNeonEffects();
-    initializeSnowAnimation();
+    // initializeSnowAnimation(); // Disabled - white dots removed
     initializeSmoothImageAnimations();
     initializeModernHeader();
     initializeModernInteractions();

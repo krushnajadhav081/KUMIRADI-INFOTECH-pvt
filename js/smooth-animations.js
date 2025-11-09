@@ -294,24 +294,8 @@ function closeMobileMenu() {
     menuIcon.className = 'fas fa-bars';
 }
 
-// ===== WHATSAPP WIDGET ANIMATION =====
-document.addEventListener('DOMContentLoaded', function() {
-    const whatsappMain = document.getElementById('whatsapp-main');
-    const whatsappOptions = document.getElementById('whatsapp-options');
-    const whatsappWidget = document.getElementById('whatsapp-widget');
-    
-    if (whatsappMain) {
-        whatsappMain.addEventListener('click', () => {
-            whatsappWidget.classList.toggle('active');
-        });
-        
-        document.addEventListener('click', (e) => {
-            if (!whatsappWidget.contains(e.target)) {
-                whatsappWidget.classList.remove('active');
-            }
-        });
-    }
-});
+// ===== WHATSAPP WIDGET - Direct link, no dropdown needed =====
+// WhatsApp widget is now a direct link, no JavaScript needed
 
 // ===== TESTIMONIAL SLIDER WITH SMOOTH TRANSITIONS =====
 const testimonials = [

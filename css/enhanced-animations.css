@@ -13,24 +13,26 @@
     pointer-events: none;
     z-index: -1;
     overflow: hidden;
+    display: none; /* Hidden - white dots removed */
 }
 
 .particle {
     position: absolute;
     background: linear-gradient(45deg, #ffffff, #cccccc);
     border-radius: 50%;
-    opacity: 0.6;
-    animation: particleFloat 15s infinite linear;
+    opacity: 0;
+    display: none; /* Hidden - white dots removed */
+    animation: none;
 }
 
 .particle:nth-child(3n) {
     background: linear-gradient(45deg, #00d4ff, #0099cc);
-    animation-duration: 20s;
+    display: none; /* Hidden */
 }
 
 .particle:nth-child(5n) {
     background: linear-gradient(45deg, #ffffff, #ffffff);
-    animation-duration: 12s;
+    display: none; /* Hidden */
 }
 
 @keyframes particleFloat {
@@ -236,8 +238,10 @@
     font-size: 1em;
     font-family: Arial, sans-serif;
     text-shadow: 0 0 5px rgba(255,255,255,0.8);
-    animation: snow 3s linear infinite;
+    animation: none;
+    display: none; /* Hidden - white dots removed */
     pointer-events: none;
+    opacity: 0;
 }
 
 .snowflake:nth-child(odd) {
